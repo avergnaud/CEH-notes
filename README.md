@@ -88,6 +88,8 @@ Every IP address that belongs to a network has:
 * a host part
 Parts are defined by the network mask
 
+A layer 3 network is a set of devices that can talk to each other without going through a gateway.
+
 ### private IP addresses ranges
 
 * 1 class A network, 10.0.0.0 - 10.255.255.255, (starting from 10.0.0.0/8 network)
@@ -119,3 +121,9 @@ An alternative is that the router drops the packet but sends the source device a
 This can be any of [those values](https://en.wikipedia.org/wiki/List_of_IP_protocol_numbers)
 For example `0x06` corresponds to TCP. 
 This means that this layer 3 header carries information about the layer 4.
+
+...
+
+## Gateway vs router
+
+[https://www.router-switch.com/faq/gateway-router-difference.html](https://www.router-switch.com/faq/gateway-router-difference.html)
