@@ -47,11 +47,11 @@ Default is PVID 1.
 Switches can handle multiple VLANs.
 [https://www.youtube.com/watch?v=vE5gvbmR8jg](https://www.youtube.com/watch?v=vE5gvbmR8jg)
 
-Trunk = 802.1q link, adds VLAN ID (VLAN tag) to frames traversing switches.
-trunking = passing different VLAN frames over the trunk
-Trunk port (CISCO term) = tagged port, port that adds the VLAN tag to ethernet frames
-Access port (CISCO) = untagged port, switch port that sends and expects to receive frames without VLAN tag. An access port carries traffic for a single VLAN.
-Switches remove the VLAN tag before deleivering frames to destination.
+* Trunk = 802.1q link, adds VLAN ID (VLAN tag) to frames traversing switches.
+* trunking = passing different VLAN frames over the trunk
+* Trunk port (CISCO term) = tagged port, port that adds the VLAN tag to ethernet frames
+* Access port (CISCO) = untagged port, switch port that sends and expects to receive frames without VLAN tag. An access port carries traffic for a single VLAN.
+* Switches remove the VLAN tag before deleivering frames to destination.
 
 ![VLAN tag](doc/VLAN_tag.png)
 
@@ -102,7 +102,7 @@ A layer 3 network is a set of devices that can talk to each other without going 
 
 [https://en.wikipedia.org/wiki/IPv4#Header](https://en.wikipedia.org/wiki/IPv4#Header)
 
-#### packet splitting
+*packet splitting*
 
 IPV4 packet size is [20, 65 535] bytes.
 But ethernet frames MTU is 1500 bytes.
@@ -117,13 +117,48 @@ An alternative is that the router drops the packet but sends the source device a
 
 *The fragment offset field* specifies the offset of a particular fragment relative to the beginning of the original unfragmented IP datagram in units of eight-byte blocks. The first fragment has an offset of zero. The 13 bit field allows a maximum offset of (2^13 – 1) × 8 = 65,528 bytes, which, with the header length included (65,528 + 20 = 65,548 bytes), supports fragmentation of packets exceeding the maximum IP length of 65,535 bytes.
 
-*The protocol field* defines the protocol used in the data portion of the IP datagram.
+*Version*
+"4" for IPV4
+
+*IHL*
+Internet Header Length. Minimum length is 160bits (if no options).
+
+*DSCP*
+Differentiated Service Code Point. Used to prioritize packets.
+
+*ECN*
+Explicit Congestion Notification. End-to-end notification of network congestion without dropping packets. 
+
+*Total length* of entire IPV4 packet. From 20 bytes (only minimal header) to 65 535 bytes (maximum packet size)
+
+*Identification*, *flag* and *fragment offset* are used for a common purpose: packet splitting. They are used by the receiver to gather all fragments of the packet.s
+Packets may be splitted into *fragments*, each of them being part of the same original packet.
+*indentification* field contains the unique identifier of the packet, same in all fragments. 
+The *flag* field says wether the packet was fragmented or not.
+The *fragment offset* field is the sequence number of each fragment (starting with 0).
+
+*TTL* prevents infinite routing loops. Each router decrements TTL field by 1.
+
+The *protocol* field defines the protocol used in the data portion of the IP datagram.
 This can be any of [those values](https://en.wikipedia.org/wiki/List_of_IP_protocol_numbers)
 For example `0x06` corresponds to TCP. 
 This means that this layer 3 header carries information about the layer 4.
 
-...
+*Header checksum* is not the checksum of the full packet (or fragment). But only the header checksum.
+Every router decrements the TTL thus recalculates the header checksum.
+
+*Source IPV4 address*
+
+*Destination IPV4 address*
 
 ## Gateway vs router
 
 [https://www.router-switch.com/faq/gateway-router-difference.html](https://www.router-switch.com/faq/gateway-router-difference.html)
+
+# OSI model and common protocols
+
+![OSI protocols](./doc/OSI_MODEL_protocols.jpg)
+
+## protocol experiment with scapy
+
+[https://github.com/secdev/scapy/](https://github.com/secdev/scapy/)
