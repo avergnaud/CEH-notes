@@ -101,7 +101,10 @@ Switches can handle multiple VLANs.
 [https://en.wikipedia.org/wiki/EtherType](https://en.wikipedia.org/wiki/EtherType)
 EtherType is a two-octet field in an Ethernet frame. It is used to indicate which protocol is encapsulated in the payload of the frame and is used at the receiving end by the data link layer to determine how the payload is processed.
 [https://en.wikipedia.org/wiki/EtherType#Values](https://en.wikipedia.org/wiki/EtherType#Values)
-`0x0800` corresponds to "IPv4". This means that this layer 2 header carries information about the layer 3.
+
+Layer 2 header carries information about the layer 3 :
+* `0x0800` corresponds to "IPv4"
+* `0x0806` corresponds to "ARP"
 
 ### Data
 
@@ -113,17 +116,47 @@ The maximum payload in 802.3 ethernet is 1500 bytes. MTU is 1500 bytes.
 
 Cyclic Redundancy Check (Frame Check Sequence)
 
+## ARP
+
+![layer 3 example](./doc/Layer_3_network_example.drawio.png)
+
+[ARP](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) is not IP. ARP is layer 2.
+"
+* Computer 1 uses a cached ARP table to look up 192.168.0.55 for any existing records of Computer 2's MAC address
+* If the cache did not produce a result, computer 1 has to send a broadcast ARP request message (destination FF:FF:FF:FF:FF:FF MAC address), which is accepted by all computers on the local network, requesting an answer for 192.168.0.55.
+* Computer 2 responds with an ARP response message containing its MAC and IP addresses. As part of fielding the request, Computer 2 may insert an entry for Computer 1 into its ARP table for future use.
+* Computer 1 receives and caches the response information in its ARP table and can now send the packe"
+"
+
+"ARP packets are not routable nor do they have IP headers. ARP is a broadcast frame that is sent on a layer 2 segment. ARP has no protocol number and has type `0x806`, which all lends itself to L2.
+Ultimately ARP operates only at L2 but provides services to L3." [src](https://gregsowell.com/?p=2987)
+
+One could say that ARP provides services to L2: if computer 1 has to send a frame to computer 2, then computer 1 needs computer 2 MAC address.
+
+scapy:
+* psrc is Sender protocol address (SPA)
+* pdst is Target protocol address (TPA)
+* hwsrc is Target hardware address (THA)
+[https://en.wikipedia.org/wiki/Address_Resolution_Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol)
+
+
+this sends ARP request to broadcast MAC address:
+```
+result = sr1(ARP(op="who-has", psrc="192.168.0.35", pdst="192.168.0.31"))
+```
+![ARP request wireshart](./doc/ARP_request.png)
+
+`result` returns the correct MAC address `b8:27:eb:13:dc:9f`:
+```
+<ARP  hwtype=0x1 ptype=IPv4 hwlen=6 plen=4 op=is-at hwsrc=b8:27:eb:13:dc:9f psrc=192.168.0.31 hwdst=d8:cb:8a:84:06:8c pdst=192.168.0.35 |<Padding  load='\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' |>>
+```
+![ARP response wireshart](./doc/ARP_response.png)
+
 # Layer 3
 
 ![layer 3](./doc/LAYER_3.drawio.png)
 
-## Example using [scapy](https://github.com/secdev/scapy/)
 
-![layer 3 example](./doc/Layer_3_network_example.drawio.png)
-
-```
-send(Ether()/IP(dst="192.168.0.31"))
-```
 
 ## IP V4
 
@@ -207,6 +240,8 @@ Every router decrements the TTL thus recalculates the header checksum.
 ## Gateway vs router
 
 [https://www.router-switch.com/faq/gateway-router-difference.html](https://www.router-switch.com/faq/gateway-router-difference.html)
+
+Any host in any network knows its default router or default gateway. ()
 
 # Recap: OSI model and common protocols
 
