@@ -8,9 +8,50 @@ Ethernet frame format is defined by the IEEE 802.3 standard:
 Wikipedia: 
 [https://en.wikipedia.org/wiki/Ethernet_frame](https://en.wikipedia.org/wiki/Ethernet_frame)
 
-## Ethernet frame
+# Layer 2
 
 A layer 2 network is a broadcast domain.
+
+![layer 2](./doc/LAYER_2.drawio.png)
+
+## Example using [scapy](https://github.com/secdev/scapy/)
+
+`ifconfig -a` provides own MAC address.
+
+`sudo nmap -sS 192.168.0/24` also returns the MAC addresses .TCP SYN (Stealth) Scan (-sS) is the default TCP scan when run as root [nmap book](https://nmap.org/book/synscan.html)
+
+![network_layer_2_example](./doc/Layer_2_network_example.drawio.png)
+
+On kali:
+```
+sudo ./run_scapy 
+x = Ether(src='d8:cb:8a:84:06:8c', dst='b8:27:eb:13:dc:9f')
+ls(x)
+sendp(x, iface='eth0')
+```
+
+On rapsberry pi...
+tcpdump documentation:
+```
+-e     Print the link-level header on each dump line.  This can be used, for example, to print MAC layer addresses for protocols such as Ethernet and IEEE 802.11
+-n     Don't convert addresses (i.e., host addresses, port numbers, etc.) to names.
+-i interface
+```
+tcpdump supports the “ether” qualifier to specify ethernet addresses in the standard colon-separated format. To capture any traffic sent to or from a given MAC address :
+```
+tcpdump ether host e8:2a:ea:44:55:66
+```
+Thus we capture the frame using this command:
+```
+sudo tcpdump -eni eth0 ether host d8:cb:8a:84:06:8c > tcpdump.txt
+```
+shows:
+```
+12:02:24.022056 d8:cb:8a:84:06:8c > b8:27:eb:13:dc:9f, ethertype Loopback (0x9000), length 60: Loopback, skipCount 0,  invalid (0)
+```
+![wireshark capture](./doc/Layer_2_network_example_wireshark.png)
+
+## Ethernet frame
 
 ![ethernet header](doc/ETHERNET_FRAMES.drawio.png)
 
@@ -36,7 +77,7 @@ Some switches operate on Fast-Forward mode. They can look into their MAC address
 
 [https://www.networkacademy.io/ccna/ethernet/store-and-forward-vs-cut-through-switching](https://www.networkacademy.io/ccna/ethernet/store-and-forward-vs-cut-through-switching)
 
-### source MAC address
+### source MAC address 
 
 ### VLAN tag
 
@@ -71,6 +112,18 @@ The maximum payload in 802.3 ethernet is 1500 bytes. MTU is 1500 bytes.
 ### CRC (FCS)
 
 Cyclic Redundancy Check (Frame Check Sequence)
+
+# Layer 3
+
+![layer 3](./doc/LAYER_3.drawio.png)
+
+## Example using [scapy](https://github.com/secdev/scapy/)
+
+![layer 3 example](./doc/Layer_3_network_example.drawio.png)
+
+```
+send(Ether()/IP(dst="192.168.0.31"))
+```
 
 ## IP V4
 
@@ -155,10 +208,6 @@ Every router decrements the TTL thus recalculates the header checksum.
 
 [https://www.router-switch.com/faq/gateway-router-difference.html](https://www.router-switch.com/faq/gateway-router-difference.html)
 
-# OSI model and common protocols
+# Recap: OSI model and common protocols
 
 ![OSI protocols](./doc/OSI_MODEL_protocols.jpg)
-
-## protocol experiment with scapy
-
-[https://github.com/secdev/scapy/](https://github.com/secdev/scapy/)
