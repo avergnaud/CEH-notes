@@ -2,17 +2,17 @@
 
 ![CEH cover](doc/CEH_cover.png)
 
-Ethernet frame format is defined by the IEEE 802.3 standard: 
-[https://fr.wikipedia.org/wiki/IEEE_802.3](https://fr.wikipedia.org/wiki/IEEE_802.3)
-
-Wikipedia: 
-[https://en.wikipedia.org/wiki/Ethernet_frame](https://en.wikipedia.org/wiki/Ethernet_frame)
-
 # Layer 2
 
 A layer 2 network is a broadcast domain.
 
 ![layer 2](./doc/LAYER_2.drawio.png)
+
+Ethernet frame format is defined by the IEEE 802.3 standard: 
+[https://fr.wikipedia.org/wiki/IEEE_802.3](https://fr.wikipedia.org/wiki/IEEE_802.3)
+
+Wikipedia: 
+[https://en.wikipedia.org/wiki/Ethernet_frame](https://en.wikipedia.org/wiki/Ethernet_frame)
 
 ## Example using [scapy](https://github.com/secdev/scapy/)
 
@@ -121,12 +121,11 @@ Cyclic Redundancy Check (Frame Check Sequence)
 ![layer 3 example](./doc/Layer_3_network_example.drawio.png)
 
 [ARP](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) is not IP. ARP is layer 2.
-"
-* Computer 1 uses a cached ARP table to look up 192.168.0.55 for any existing records of Computer 2's MAC address
+
+* "Computer 1 uses a cached ARP table to look up 192.168.0.55 for any existing records of Computer 2's MAC address
 * If the cache did not produce a result, computer 1 has to send a broadcast ARP request message (destination FF:FF:FF:FF:FF:FF MAC address), which is accepted by all computers on the local network, requesting an answer for 192.168.0.55.
 * Computer 2 responds with an ARP response message containing its MAC and IP addresses. As part of fielding the request, Computer 2 may insert an entry for Computer 1 into its ARP table for future use.
-* Computer 1 receives and caches the response information in its ARP table and can now send the packe"
-"
+* Computer 1 receives and caches the response information in its ARP table and can now send the packet"
 
 "ARP packets are not routable nor do they have IP headers. ARP is a broadcast frame that is sent on a layer 2 segment. ARP has no protocol number and has type `0x806`, which all lends itself to L2.
 Ultimately ARP operates only at L2 but provides services to L3." [src](https://gregsowell.com/?p=2987)
@@ -151,6 +150,14 @@ result = sr1(ARP(op="who-has", psrc="192.168.0.35", pdst="192.168.0.31"))
 <ARP  hwtype=0x1 ptype=IPv4 hwlen=6 plen=4 op=is-at hwsrc=b8:27:eb:13:dc:9f psrc=192.168.0.31 hwdst=d8:cb:8a:84:06:8c pdst=192.168.0.35 |<Padding  load='\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00' |>>
 ```
 ![ARP response wireshart](./doc/ARP_response.png)
+
+### ARP cache poisoning and MITM
+
+[https://medium.datadriveninvestor.com/arp-cache-poisoning-using-scapy-d6711ecbe112](https://medium.datadriveninvestor.com/arp-cache-poisoning-using-scapy-d6711ecbe112)
+
+[https://www.ettercap-project.org/](https://www.ettercap-project.org/)
+
+[https://www.hackers-arise.com/post/2017/08/28/mitm-attack-with-ettercap](https://www.hackers-arise.com/post/2017/08/28/mitm-attack-with-ettercap)
 
 # Layer 3
 
