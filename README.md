@@ -258,14 +258,72 @@ r = sr1(p)
 Request:
 ![ICMP request](./doc/ICMP_request.png)
 
+Destination MAC address in Ethernet frame is the MAC Address of the LAN default gateway `e4:9e:12:77:aa:85`.
+The router will change this MAC address, during processing by the WAN interface. It will replace the destination MAC address with the next hop router's MAC address.
+
 Response:
 ![ICMP response](./doc/ICMP_response.png)
+
+ICMP requires the IP header, because ICMP packets may be routed to different networks
 
 ## Gateway vs router
 
 [https://www.router-switch.com/faq/gateway-router-difference.html](https://www.router-switch.com/faq/gateway-router-difference.html)
 
 Any host in any network knows its default router or default gateway. ()
+
+# Layer 4
+
+![layer 4](./doc/LAYER_4.drawio.png)
+
+## TCP
+
+Transmission Control Protocol. Establishes a connexion over network layer.
+
+### 3 way handshake
+
+Ngnix server running on the raspberry pi.
+
+"SOCK_STREAM: It is associated with the TCP protocol and provides security in the transmission of data and security in the data reception. In connection-oriented communication, there must be a channel established before we transfer data."
+
+Example using the browser:
+
+* SYN
+  ![TCP SYN](./doc/TCP_SYN.png)
+* SYN, ACK
+  ![TCP SYN ACK](./doc/TCP_SYN_ACK.png)
+* ACK
+  ![TCP ACK](./doc/TCP_ACK.png)
+
+The overall connection between these devices can be described using this socket pair: 
+(192.168.0.31:80, 192.168.0.35:55186)
+```
+netstat -anpl | grep :80
+```
+returns `tcp        0      0 192.168.0.35:55186      192.168.0.31:80         ESTABLISHED 1082/firefox-esr`
+
+Other example using python:
+```
+import socket;
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM);
+client_socket.connect(("192.168.0.31", 80))
+```
+
+Then we can use netstat command to check the connection in Linux. All the data will be transferred over this connection. So this TCP socket pair is (192.168.0.35:55310, 192.168.0.31:80)
+```
+netstat -anpl | grep :80
+```
+returns `tcp        0      0 192.168.0.35:55310      192.168.0.31:80         ESTABLISHED 2585/python3`
+
+## UDP
+
+"SOCK_DGRAM: It is associated with the UDP protocol and indicates that packets will travel in the datagram type, which has an asynchronous communication style. For UDP sockets, we can send out data without a connection. So this is called connection-less."
+
+Example using scapy:
+```
+ans = sr1(IP(dst="8.8.8.8")/UDP(sport=RandShort(), dport=53)/DNS(rd=1,qd=DNSQR(qname="udemy.com",qtype="A")))
+ans.an.rdata
+```
 
 # Recap: OSI model and common protocols
 
