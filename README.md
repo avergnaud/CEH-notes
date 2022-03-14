@@ -151,6 +151,12 @@ result = sr1(ARP(op="who-has", psrc="192.168.0.35", pdst="192.168.0.31"))
 ```
 ![ARP response wireshart](./doc/ARP_response.png)
 
+A host will send a ARP request only to query IP address from the same network.
+For example, no broadcast ARP request will be sent to query Google DNS server 8.8.8.8.
+For any IP address not in the LAN, hosts use the MAC address of the default gateway. In above example:
+* 192.168.0.22
+* 00:24:d4:79:ae:06
+
 ### ARP cache poisoning and MITM
 
 [https://medium.datadriveninvestor.com/arp-cache-poisoning-using-scapy-d6711ecbe112](https://medium.datadriveninvestor.com/arp-cache-poisoning-using-scapy-d6711ecbe112)
@@ -162,8 +168,6 @@ result = sr1(ARP(op="who-has", psrc="192.168.0.35", pdst="192.168.0.31"))
 # Layer 3
 
 ![layer 3](./doc/LAYER_3.drawio.png)
-
-
 
 ## IP V4
 
@@ -243,6 +247,19 @@ Every router decrements the TTL thus recalculates the header checksum.
 *Source IPV4 address*
 
 *Destination IPV4 address*
+
+## ICMP
+
+Internet Control Message Protocol
+```
+p = IP(dst="8.8.8.8")/ICMP()
+r = sr1(p)
+```
+Request:
+![ICMP request](./doc/ICMP_request.png)
+
+Response:
+![ICMP response](./doc/ICMP_response.png)
 
 ## Gateway vs router
 
