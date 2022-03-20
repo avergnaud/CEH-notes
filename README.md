@@ -248,6 +248,10 @@ Every router decrements the TTL thus recalculates the header checksum.
 
 *Destination IPV4 address*
 
+## IP v6
+
+![IP v6](./doc/ipv6.jpg)
+
 ## ICMP
 
 Internet Control Message Protocol
