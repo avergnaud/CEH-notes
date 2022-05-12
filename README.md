@@ -331,4 +331,15 @@ ans.an.rdata
 
 # Recap: OSI model and common protocols
 
+## detail
+
 ![OSI protocols](./doc/OSI_MODEL_protocols.jpg)
+
+## summary
+
+![OSI summary](./doc/OSI-summary.png)
+
+## "cheat shee"
+
+![OSI cheat sheet](./doc/OSI-cheat-sheet.jpg)
+
