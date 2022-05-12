@@ -339,7 +339,7 @@ ans.an.rdata
 
 ![OSI summary](./doc/OSI-summary.png)
 
-## "cheat shee"
+## "cheat sheet"
 
 ![OSI cheat sheet](./doc/OSI-cheat-sheet.jpg)
 
