@@ -8,6 +8,8 @@ A layer 2 network is a broadcast domain.
 
 ![layer 2](./doc/LAYER_2.drawio.png)
 
+[https://www.ciscopress.com/articles/article.asp?p=2348265&seqNum=2](https://www.ciscopress.com/articles/article.asp?p=2348265&seqNum=2)
+
 Ethernet frame format is defined by the IEEE 802.3 standard: 
 [https://fr.wikipedia.org/wiki/IEEE_802.3](https://fr.wikipedia.org/wiki/IEEE_802.3)
 
@@ -95,6 +97,16 @@ Switches can handle multiple VLANs.
 * Switches remove the VLAN tag before deleivering frames to destination.
 
 ![VLAN tag](doc/VLAN_tag.png)
+
+[https://www.nojitter.com/qos-layer-2](https://www.nojitter.com/qos-layer-2)
+
+ "VLANs are a way to logically separate traffic in a switched (Layer 2) infrastructure. Packets traversing the LAN are given an extra tag field that identifies the VLAN to which they belong. Switches will then only forward those packets to ports that belong to that VLAN. This keeps each VLAN's traffic separated as if they were on a separate physical infrastructure.
+
+But does it really? From a forwarding point of view, yes. But from a timing point of view it does not. The data and real-time packets are still using the same trunk links, the same switches and (most importantly) the same output queues. So if a big data transfer is occuring concurrent with our real-time stream, the real-time packets can end up waiting in that output queue for the data packets that are ahead of it. Yes they are destined for separate destinations, yes they are logically separated, but they are still waiting in line together.
+
+So to get the QoS behavior we need, which means getting those real-time packets to the head of their own queue, and then giving that queue priority, we have to implement IEEE 802.1p as well. This priority mechanism was defined by the IEEE about 10 years ago in conjunction with IEEE 802.1Q, and the two standards use the same header referred to above. The priority component defines one of eight priorities for the packet, while the VLAN component defines to which VLAN this packet belongs. If your switches are less than 10 years old they likely have this capability and it just needs to be enabled.
+
+In many switches the priority of the VLAN can be defined in the switch itself, so it is possible to mark packets at the edge with just the VLAN identifier, and then configure the switches to ensure that all packets from that VLAN are given priority when passing through the switch. The switch implements additional queues at each output port to support the higher priority traffic, and typically uses a simple priority mechanism. This means traffic in the higher priority queue is forwarded before any traffic in a lower priority queue."
 
 ### EtherType
 
@@ -275,6 +287,24 @@ ICMP requires the IP header, because ICMP packets may be routed to different net
 [https://www.router-switch.com/faq/gateway-router-difference.html](https://www.router-switch.com/faq/gateway-router-difference.html)
 
 Any host in any network knows its default router or default gateway. ()
+
+## Layer 3 (Multilayer) Switch Operation
+
+[https://www.nojitter.com/qos-layer-2](https://www.nojitter.com/qos-layer-2)
+
+"Some switches will also recognize the Layer 3 header QoS markings (the TOS or DSCP bits), and then put those packets into the appropriate queue. This is a good option if it is supported by your hardware and if your enterprise has not chosen to implement VLANs. If each switch on the path will provide priority by watching the Layer 3 tags, then priority can be provided without using the extra Layer 2 header required for IEEE 802.1p/Q.
+
+No matter which approach you take, don't ignore QoS at Layer 2. The sporadic problems that occur when voice or video is not being carried by QoS will drive the IT team mad trying to find and isolate them later. "
+
+[https://www.ciscopress.com/articles/article.asp?p=2348265&seqNum=2](https://www.ciscopress.com/articles/article.asp?p=2348265&seqNum=2)
+
+"The associated table for Layer 3 lookups is called a FIB table. The FIB table contains not only egress ports and VLAN information but also MAC rewrite information. The ACL and QoS parallel lookups happen the same as Layer 2 switches, except there may be additional support for Layer 3 ACLs and QoS prioritization.
+
+For example, a Layer 2 switch may only be able to apply to rate-limiting frames based on source or destination MAC addresses, whereas a multilayer switch generally supports rate-limiting frames on IP/MAC addresses.
+
+Unfortunately, different models of Cisco switches support different capabilities, and some Layer 2-only switches actually support Layer 3 ACLs and QoS lookups. It is best to consult the product documentation at Cisco.com for clear information about what your switch supports. For the purpose of CCNP Switch and the context of this book, Layer 2 switches support ACLs and QoS based on MAC addresses, whereas Layer 3 switches support ACLs and QoS based on IP or MAC addresses."
+
+
 
 # Layer 4
 
