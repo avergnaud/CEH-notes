@@ -8,6 +8,8 @@ A layer 2 network is a broadcast domain.
 
 ![layer 2](./doc/LAYER_2.drawio.png)
 
+[https://www.ciscopress.com/articles/article.asp?p=2348265&seqNum=2](https://www.ciscopress.com/articles/article.asp?p=2348265&seqNum=2)
+
 Ethernet frame format is defined by the IEEE 802.3 standard: 
 [https://fr.wikipedia.org/wiki/IEEE_802.3](https://fr.wikipedia.org/wiki/IEEE_802.3)
 
