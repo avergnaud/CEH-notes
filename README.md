@@ -98,6 +98,16 @@ Switches can handle multiple VLANs.
 
 ![VLAN tag](doc/VLAN_tag.png)
 
+*Tag protocol identifier, TPID, Ethernet type* : 16 bits, always `0x8100` for th VLAN tag (802.1Q Tag)
+
+*Tag control information* contains *Priority (3 bits)*,	*CFI (1 bit)*, and *Vlan ID, VID (12 bits)*
+
+*PCP : Priority Code Point* Different PCP values can be used to prioritize different classes of traffic
+
+*Drop eligible indicator (DEI)*  indicates frames eligible to be dropped in the presence of congestion
+
+*VLAN identifier (VID)* specifies the VLAN to which the frame belongs
+
 [https://www.nojitter.com/qos-layer-2](https://www.nojitter.com/qos-layer-2)
 
  "VLANs are a way to logically separate traffic in a switched (Layer 2) infrastructure. Packets traversing the LAN are given an extra tag field that identifies the VLAN to which they belong. Switches will then only forward those packets to ports that belong to that VLAN. This keeps each VLAN's traffic separated as if they were on a separate physical infrastructure.
@@ -233,7 +243,7 @@ An alternative is that the router drops the packet but sends the source device a
 Internet Header Length. Minimum length is 160bits (if no options).
 
 *DSCP*
-Differentiated Service Code Point. Used to prioritize packets.
+Differentiated Service Code Point. Used to prioritize packets. "The definition of ToS was changed entirely in RFC 2474, and it is now called Differentiated Service (DS). On the eight fields (DSCP and ECN), the upper six bit contain value called Differentiated Services Code Point (DSCP)" [https://blogs.manageengine.com/network/netflowanalyzer/2012/04/24/understanding-ip-precedence-tos-dscp.html](https://blogs.manageengine.com/network/netflowanalyzer/2012/04/24/understanding-ip-precedence-tos-dscp.html) & [https://en.wikipedia.org/wiki/Type_of_service](https://en.wikipedia.org/wiki/Type_of_service)
 
 *ECN*
 Explicit Congestion Notification. End-to-end notification of network congestion without dropping packets. 
@@ -304,7 +314,9 @@ For example, a Layer 2 switch may only be able to apply to rate-limiting frames 
 
 Unfortunately, different models of Cisco switches support different capabilities, and some Layer 2-only switches actually support Layer 3 ACLs and QoS lookups. It is best to consult the product documentation at Cisco.com for clear information about what your switch supports. For the purpose of CCNP Switch and the context of this book, Layer 2 switches support ACLs and QoS based on MAC addresses, whereas Layer 3 switches support ACLs and QoS based on IP or MAC addresses."
 
-
+[https://networkengineering.stackexchange.com/questions/48797/switch-fib-and-router-fib](https://networkengineering.stackexchange.com/questions/48797/switch-fib-and-router-fib)
+* "at layer 2 for Ethernet switches operations you have a Filtering Database, also known as "Mac Address Table", which contains MAC addresses, learned by the switch when it receives a frame"
+* "at layer 3 for IP routers you have one or several Routing Information Base (RIB), built automatically (connected networks), manually (static routes) or by routing protocols (BGP, OSPF, EIGRP, IS-IS, RIP...) and a Forwarding Information Base(FIB), which is the base built by picking the best route for each network in the various RIBs. The router uses the FIB to determine the destination of a given packet."
 
 # Layer 4
 
