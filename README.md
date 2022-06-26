@@ -102,7 +102,7 @@ Switches can handle multiple VLANs.
 
 ![VLAN tag](doc/VLAN_tag.png)
 
-*Tag protocol identifier, TPID, Ethernet type* : 16 bits, always `0x8100` for th VLAN tag (802.1Q Tag)
+*Tag protocol identifier, TPID, Ethernet type* : 16 bits, always `0x8100` (4-digit hexadecimal integer. could have been 0xFFFF) for th VLAN tag (802.1Q Tag)
 
 *Tag control information* contains *Priority (3 bits)*,	*CFI (1 bit)*, and *Vlan ID, VID (12 bits)*
 
@@ -302,6 +302,16 @@ ICMP requires the IP header, because ICMP packets may be routed to different net
 
 Any host in any network knows its default router or default gateway. ()
 
+## routing
+
+[https://www.cisco.com/c/en/us/products/routers/4000-series-integrated-services-routers-isr/index.html](https://www.cisco.com/c/en/us/products/routers/4000-series-integrated-services-routers-isr/index.html)
+
+![cisco 4000 series ports](./doc/cisco_4000_series_ge_ports.PNG?raw=true)
+
+![routing](./doc/routing_1.PNG)
+
+Parenthèse OSPF [https://www.it-connect.fr/chapitres/les-zones-ospf/](https://www.it-connect.fr/chapitres/les-zones-ospf/)
+
 ## Layer 3 (Multilayer) Switch Operation
 
 [https://www.nojitter.com/qos-layer-2](https://www.nojitter.com/qos-layer-2)
@@ -389,3 +399,15 @@ ans.an.rdata
 
 ![OSI cheat sheet](./doc/OSI-cheat-sheet.jpg)
 
+# DHCP
+
+From the client host, how to renew IP adress? (and trigger full DHCP `DISCOVER OFFER REQUEST ACK`)?
+
+From windows : `ipconfig/release` then `ipconfig/renew`
+From unix : `sudo dhclient -r` then `sudo dhclient`
+
+# LAN HTTP example
+
+## initial state
+
+# WAN HTTPS DNS example
