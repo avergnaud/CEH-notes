@@ -385,6 +385,38 @@ ans = sr1(IP(dst="8.8.8.8")/UDP(sport=RandShort(), dport=53)/DNS(rd=1,qd=DNSQR(q
 ans.an.rdata
 ```
 
+# Layer 5
+
+...
+
+# Layer 6
+
+...
+
+# Layer 7
+
+## DHCP
+
+From the client host, how to :
+* send DHCP `RELEASE` 
+* and then trigger full DHCP `DISCOVER OFFER REQUEST ACK`
+
+From windows : 
+* `ipconfig/release` 
+* then `ipconfig/renew`
+
+From unix : 
+* `sudo dhclient -r` 
+* then `sudo dhclient`
+
+### The broadcast flag
+
+[https://www.quora.com/What-is-the-destination-IP-address-of-DHCP](https://www.quora.com/What-is-the-destination-IP-address-of-DHCP)
+
+"The client may send a request with the broadcast flag cleared. In this situation the server will actually send the request directly to the network adapter that made the request. This is because the client also sends it’s layer 2 address as part of the DHCP packet. The server will also set the layer 3 address to the intended IP address of the client. The DHCP protocol requires that a when a server receives a request it SHOULD respond back with the unicast addresses. But, it does go on to say that if unicast transmission is not possible then such a message MAY be sent back to the client as a broadcast message instead.
+* Broadcast flag set: Both client and server use 255.255.255.255 as the destination address.
+* Broadcast flag not set: Client uses 255.255.255.255. Server SHOULD use address intended for client."
+
 # Recap: OSI model and common protocols
 
 ## detail
@@ -398,13 +430,6 @@ ans.an.rdata
 ## "cheat sheet"
 
 ![OSI cheat sheet](./doc/OSI-cheat-sheet.jpg)
-
-# DHCP
-
-From the client host, how to renew IP adress? (and trigger full DHCP `DISCOVER OFFER REQUEST ACK`)?
-
-From windows : `ipconfig/release` then `ipconfig/renew`
-From unix : `sudo dhclient -r` then `sudo dhclient`
 
 # LAN HTTP example
 
