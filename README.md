@@ -410,7 +410,10 @@ From unix :
 * `sudo dhclient -r` 
 * then `sudo dhclient`
 
-*Attention* the following article assumes Broadcast flag set:
+*Attention* the following article:
+* assumes Broadcast flag set.
+* is wrong about destination mac adress for `DHCP OFFER` and `DHCP ACK`. The destination mac address is NOT `ff:ff:ff:ff:ff:ff`. It is the client mac address.
+
 [https://www.netmanias.com/en/post/techdocs/5998/dhcp-network-protocol/understanding-the-basic-operations-of-dhcp](https://www.netmanias.com/en/post/techdocs/5998/dhcp-network-protocol/understanding-the-basic-operations-of-dhcp)
 
 ### The broadcast flag
@@ -418,8 +421,8 @@ From unix :
 [https://www.quora.com/What-is-the-destination-IP-address-of-DHCP](https://www.quora.com/What-is-the-destination-IP-address-of-DHCP)
 
 "The client may send a request with the broadcast flag cleared. In this situation the server will actually send the request directly to the network adapter that made the request. This is because the client also sends it’s layer 2 address as part of the DHCP packet. The server will also set the layer 3 address to the intended IP address of the client. The DHCP protocol requires that when a server receives a request it SHOULD respond back with the unicast addresses. But, it does go on to say that if unicast transmission is not possible then such a message MAY be sent back to the client as a broadcast message instead.
-* Broadcast flag set: Client uses 255.255.255.255 as the destination IP address, ff:ff:ff:ff:ff:ff as the destination MAC address. Server uses 255.255.255.255 as the destination IP address, and client specific destination mac addess.
-* Broadcast flag not set (set to `Unicast`): Client uses 255.255.255.255 / ff:ff:ff:ff:ff:ff as the destination addresses. Server SHOULD use IP address intended for client, and client specific destination mac addess."
+* Broadcast flag set: Client uses `255.255.255.255` as the destination IP address, `ff:ff:ff:ff:ff:ff` as the destination MAC address. Server uses `255.255.255.255` as the destination IP address, and client mac addess as the destination MAC address.
+* Broadcast flag not set (set to `Unicast`): Client uses `255.255.255.255` / `ff:ff:ff:ff:ff:ff` as the destination addresses. Server SHOULD use IP address intended for client, and client mac addess as the destination MAC address."
 
 ![DHCP broadcast](./doc/DHCP_broadcast_flag_broadcast.PNG?raw=true)
 
