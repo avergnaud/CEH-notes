@@ -442,6 +442,8 @@ From unix :
 
 # LAN HTTP example
 
+On the server host, run `npx serve ./www`
+
 ## initial state
 
 # WAN HTTPS DNS example
