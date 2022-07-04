@@ -403,8 +403,8 @@ From the client host, how to :
 ?
 
 From windows : 
-* `ipconfig/release` 
-* then `ipconfig/renew`
+* `ipconfig /release` 
+* then `ipconfig /renew`
 
 From unix : 
 * `sudo dhclient -r` 
