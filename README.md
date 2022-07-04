@@ -183,6 +183,23 @@ For any IP address not in the LAN, hosts use the MAC address of the default gate
 * 192.168.0.22
 * 00:24:d4:79:ae:06
 
+How to read ARP cache?
+
+on Windows:
+* `arp -a`
+
+on Unix:
+* `arp -n`
+
+
+How to remove entry from cache?
+
+on Windows, flush all ARP cache:
+* `arp -d`
+
+on Unix, remove specific entry:
+* `sudo arp -d << ip >>`
+
 ### ARP cache poisoning and MITM
 
 [https://medium.datadriveninvestor.com/arp-cache-poisoning-using-scapy-d6711ecbe112](https://medium.datadriveninvestor.com/arp-cache-poisoning-using-scapy-d6711ecbe112)
@@ -286,12 +303,14 @@ p = IP(dst="8.8.8.8")/ICMP()
 r = sr1(p)
 ```
 Request:
+
 ![ICMP request](./doc/ICMP_request.png)
 
 Destination MAC address in Ethernet frame is the MAC Address of the LAN default gateway `e4:9e:12:77:aa:85`.
 The router will change this MAC address, during processing by the WAN interface. It will replace the destination MAC address with the next hop router's MAC address.
 
 Response:
+
 ![ICMP response](./doc/ICMP_response.png)
 
 ICMP requires the IP header, because ICMP packets may be routed to different networks
@@ -445,5 +464,35 @@ From unix :
 On the server host, run `npx serve ./www`
 
 ## initial state
+
+The client host has not "DHCP joined" the network. Its Network Interface ("Network Interface Controller", "Network Interface Card", "Network Adapter") does not have a IP address.
+
+The client's arp cache is empty.
+
+![initial state](./doc/LAN_HTTP_EXAMPLE_1.drawio.png?raw=true)
+
+## joining domain
+
+![LAN HTTP DHCP join](./doc/LAN_HTTP_DHCP_1.png?raw=true)
+
+From the client host, how to discover the default gateway?
+
+From windows : 
+* `ipconfig /all`
+
+From unix : 
+* `ip route show` and `cat /var/lib/dhcp/dhclient.leases` to get other DHCP lease options.
+
+![dhcp joined state](./doc/LAN_HTTP_EXAMPLE_2.drawio.png?raw=true)
+
+Note: The DHCP `DISCOVER OFFER REQUEST ACK` is followed by a ARP `Who has` client request. During the DHCP discover sequence, the client sends `DISCOVER` and `REQUEST` to the broadcast layer 2 address `ff:ff:ff:ff:ff:ff`. The DHCP server sends the `ACK` response containing multiple options.
+
+Then the client immediately asks for the Router (and Domain Name Server) mac address, using ARP protocol.
+
+![LAN HTTP DHCP then ARP](./doc/LAN_HTTP_DHCP_2.png?raw=true)
+
+## calling web server page
+
+
 
 # WAN HTTPS DNS example
