@@ -491,8 +491,19 @@ Then the client immediately asks for the Router (and Domain Name Server) mac add
 
 ![LAN HTTP DHCP then ARP](./doc/LAN_HTTP_DHCP_2.png?raw=true)
 
+And the client updates its ARP cache with the returned mac address:
+
+![dhcp and arp cache](./doc/LAN_HTTP_EXAMPLE_3.drawio.png?raw=true)
+
 ## calling web server page
 
+![ARP, TCP HANDSHAKE, HTTP request](./doc/LAN_HTTP_EXAMPLE_4.png?raw=true)
 
+[wireshark capture](./doc/LAN_HTTP_EXAMPLE_4.png)
 
 # WAN HTTPS DNS example
+
+## initial state
+
+HTTP/3 (previously named "HTTP-over-QUIC") is disabled in the browser config. For example using Firefox: in `about:config`, set `network.http.http3.enabled` to false. See [https://kinsta.com/blog/http3/](https://kinsta.com/blog/http3/), [https://en.wikipedia.org/wiki/HTTP/3](https://en.wikipedia.org/wiki/HTTP/3).
+
