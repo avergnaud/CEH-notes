@@ -463,6 +463,9 @@ From unix :
 
 On the server host, run `npx serve ./www`
 
+To generate files:
+`dd if=/dev/urandom of=www/output_1M.dat  bs=1M  count=1`
+
 ## initial state
 
 The client host has not "DHCP joined" the network. Its Network Interface ("Network Interface Controller", "Network Interface Card", "Network Adapter") does not have a IP address.
