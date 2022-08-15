@@ -14,6 +14,8 @@ Decapsulation (example): The Ethernet software inspects the layer 2 PDU (Etherne
 
 # Layer 1
 
+![wave](./doc/from_oscilloscope_to_l4_wave_cg.svg?raw=true)
+
 ![oscilloscope](./doc/from_oscilloscope_to_l4_comma_cg.svg?raw=true)
 
 [https://www.mattkeeter.com/blog/2022-08-11-udp/](https://www.mattkeeter.com/blog/2022-08-11-udp/)
