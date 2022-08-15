@@ -19,9 +19,7 @@ Decapsulation (example): The Ethernet software inspects the layer 2 PDU (Etherne
 [https://www.mattkeeter.com/blog/2022-08-11-udp/](https://www.mattkeeter.com/blog/2022-08-11-udp/)
 
 
-[src](http://www.tcpipguide.com/free/t_PhysicalLayerLayer1.htm)
-
-Physical Layer (Layer 1)
+Physical Layer (Layer 1) [src](http://www.tcpipguide.com/free/t_PhysicalLayerLayer1.htm)
 
 The lowest layer of the OSI Reference Model is layer 1, the physical layer; it is commonly abbreviated "PHY". The physical layer is special compared to the other layers of the model, because it is the only one where data is physically moved across the network interface. All of the other layers perform useful functions to create messages to be sent, but they must all be transmitted down the protocol stack to the physical layer, where they are actually sent out over the network.
 
