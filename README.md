@@ -678,18 +678,23 @@ As we’ve discussed elsewhere, the distinctions between the top layers are not 
 
 ## DHCP
 
-From the client host, how to :
+From the client host, how to:
 * send DHCP `RELEASE` 
 * and then trigger full DHCP `DISCOVER OFFER REQUEST ACK`
 ?
 
-From windows : 
+From windows: 
 * `ipconfig /release` 
 * then `ipconfig /renew`
 
-From unix : 
+From unix: 
 * `sudo dhclient -r` 
 * then `sudo dhclient`
+
+For a specific interface:
+* `sudo dhclient wlan0 -r` 
+* then `sudo dhclient wlan0`
+
 
 *Attention* the following article:
 * assumes Broadcast flag set.
