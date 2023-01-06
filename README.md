@@ -726,6 +726,10 @@ For a specific interface:
 
 ![OSI cheat sheet](./doc/OSI-cheat-sheet.jpg)
 
+## some network related commands
+
+![network commands](./doc/network_commands.jpg?raw=true)
+
 # LAN HTTP example
 
 On the server host, run `npx serve ./www`
