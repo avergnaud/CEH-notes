@@ -195,7 +195,7 @@ Switches can handle multiple VLANs.
 * trunking = passing different VLAN frames over the trunk
 * Trunk port (CISCO term) = tagged port, port that adds the VLAN tag to ethernet frames
 * Access port (CISCO) = untagged port, switch port that sends and expects to receive frames without VLAN tag. An access port carries traffic for a single VLAN.
-* Switches remove the VLAN tag before deleivering frames to destination.
+* Do Switches remove the VLAN tag before delivering frames to destination?  *important* See [this](https://en.wikipedia.org/wiki/EtherType#Overview) and [this](https://en.wikipedia.org/wiki/EtherType#VLAN_tagging)
 
 ![VLAN tag](doc/VLAN_tag.png)
 
