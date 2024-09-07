@@ -243,7 +243,15 @@ Cyclic Redundancy Check (Frame Check Sequence)
 
 ![layer 3 example](./doc/Layer_3_network_example.drawio.png)
 
-[ARP](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) is not IP. ARP is layer 2.
+[ARP](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) and [https://en.wikipedia.org/wiki/Address_Resolution_Protocol#Layering](https://en.wikipedia.org/wiki/Address_Resolution_Protocol#Layering)...
+
+ARP is layer 3 (or layer 2.5)... "ARP’s primary function is to map a Layer 3 IP address (used in the Network layer) to a Layer 2 MAC address (used in the Data Link layer) on local networks. This allows the Data Link layer to forward frames using the correct MAC addresses.
+
+Why ARP is Considered Layer 3:
+ * IP Address Dependency: ARP works directly with IP addresses, which are a Layer 3 construct. It resolves IP addresses to MAC addresses, facilitating the data delivery process.
+ * Inter-Layer Interaction: Though ARP interacts with MAC addresses (Layer 2), its purpose is fundamentally tied to routing and managing Layer 3 communications (IP-level).
+
+In summary, ARP is closely tied to Layer 3 (Network) because it handles the resolution of IP addresses, even though it touches Layer 2 (Data Link) by mapping to MAC addresses. It's considered a Layer 3 protocol with Layer 2 interactions."
 
 * "Computer 1 uses a cached ARP table to look up 192.168.0.55 for any existing records of Computer 2's MAC address
 * If the cache did not produce a result, computer 1 has to send a broadcast ARP request message (destination FF:FF:FF:FF:FF:FF MAC address), which is accepted by all computers on the local network, requesting an answer for 192.168.0.55.
