@@ -518,7 +518,7 @@ and ports with numbers 49152-65535 are called dynamic, private or ephemeral port
  * 135                     RPC
  * 139                     NetBIOS (et vieux SMB)
  * 445                     SMB, CIFS
- * 465                     SMTPS = SMTP over TLS/SSL
+ * 587                     SMTPS = SMTP over TLS/SSL (previously 465)
  * 514                     syslog
  * 546                     DHCPv6 client
  * 547                     DHCPv6 server
