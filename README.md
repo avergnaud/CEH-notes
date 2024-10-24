@@ -493,6 +493,41 @@ Unfortunately, different models of Cisco switches support different capabilities
 
 # Layer 4
 
+Ports with numbers 0–1023 are called system or well-known ports; 
+
+ports with numbers 1024-49151 are called user or registered ports, 
+
+and ports with numbers 49152-65535 are called dynamic, private or ephemeral ports.
+
+ * 80                      HTTP
+ * 443                     HTTPS
+ * 20                      FTP data
+ * 21                      FTP control. FTPS mode FTP explicite
+ * 22                      SSH
+ * 22                      SCP
+ * 22                      SFTP = SSH File Transfer Protocol
+ * 23                      telnet
+ * 25                      SMTP
+ * 110                     POP3
+ * 143                     IMAP
+ * 53                      DNS
+ * 67                      DHCP server
+ * 68                      DHCP client
+ * 69                      TFTP
+ * 389                     LDAP
+ * 135                     RPC
+ * 139                     NetBIOS (et vieux SMB)
+ * 445                     SMB, CIFS
+ * 465                     SMTPS = SMTP over TLS/SSL
+ * 514                     syslog
+ * 546                     DHCPv6 client
+ * 547                     DHCPv6 server
+ * 860                     iSCSI
+ * 989                     FTPS data = File Transfer Protocol (data) over TLS/SSL
+ * 990                     FTPS mode FTP implicite
+ * 993                     IMAPS = IMAP over SSL
+ * 995                     POP3S = POP3 over SSL
+
 ![layer 4](./doc/LAYER_4.drawio.png)
 
 [src](http://www.tcpipguide.com/free/t_TransportLayerLayer4-2.htm)
