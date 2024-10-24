@@ -39,6 +39,21 @@ The following are the main responsibilities of the physical layer in the OSI Ref
 ## Definition of Hardware Specifications
 The details of operation of cables, connectors, wireless radio transceivers, network interface cards and other hardware devices are generally a function of the physical layer (although also partially the data link layer; see below).
 
+| **Cable Category** | **Maximum Data Transfer Speed** | **Maximum Cable Length** | **Frequency** | **Common Name**     |
+|--------------------|---------------------------------|--------------------------|---------------|---------------------|
+| **CAT 5**           | 100 Mbps                        | 100 m                    | 100 MHz       | 100BASE-T           |
+| **CAT 5e**          | 1 Gbps                          | 100 m                    | 100 MHz       | 1000BASE-T          |
+| **CAT 6**           | 1 Gbps                          | 100 m (with 1 Gbps)      | 250 MHz       | 1000BASE-T, 10GBASE-T (short distances) |
+| **CAT 6a**          | 10 Gbps                         | 100 m                    | 500 MHz       | 10GBASE-T           |
+| **CAT 7**           | 10 Gbps                         | 100 m                    | 600 MHz       | 10GBASE-T, 10GBASE-ER |
+| **CAT 8**           | 40 Gbps                         | 30 m                     | 2000 MHz      | 40GBASE-T           |
+
+
+ * CAT 5e is an enhanced version of CAT 5 with improved performance to support gigabit speeds.
+ * CAT 6 can support 10 Gbps speeds, but only for distances up to 55 meters; otherwise, it runs at 1 Gbps for distances up to 100 meters.
+ * CAT 6a supports 10 Gbps over the full length of 100 meters.
+ * CAT 7 and CAT 8 are often used in data centers or high-performance environments due to their high bandwidth and speed capabilities.
+
 ## Encoding and Signaling
 The physical layer is responsible for various encoding and signaling functions that transform the data from bits that reside within a computer or other device into signals that can be sent over the network.
 
