@@ -515,6 +515,7 @@ and ports with numbers 49152-65535 are called dynamic, private or ephemeral port
  * 68                      DHCP client
  * 69                      TFTP
  * 389                     LDAP
+ * 636                     LDAPS
  * 135                     RPC
  * 139                     NetBIOS (et vieux SMB)
  * 445                     SMB, CIFS
@@ -527,6 +528,13 @@ and ports with numbers 49152-65535 are called dynamic, private or ephemeral port
  * 990                     FTPS mode FTP implicite
  * 993                     IMAPS = IMAP over SSL
  * 995                     POP3S = POP3 over SSL
+ * 3389                    RDP
+ * 1433                    SQL
+ * 3306                    mysql
+ * 161                     SNMP Manager Requests and Agent Respons
+ * 162                     SNMP Traps and Inform Requests
+ * 5060                    SIP over UDP/TCP (Unsecured Communication)
+ * 5061                    SIP over TLS (Secured Communication)
 
 ![layer 4](./doc/LAYER_4.drawio.png)
 
