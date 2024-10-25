@@ -39,6 +39,8 @@ The following are the main responsibilities of the physical layer in the OSI Ref
 ## Definition of Hardware Specifications
 The details of operation of cables, connectors, wireless radio transceivers, network interface cards and other hardware devices are generally a function of the physical layer (although also partially the data link layer; see below).
 
+### cables
+
 IEEE 802.3
  * Twisted pair cable
     * Unshielded Twisted Pair or Shielded Twisted Pair
@@ -72,7 +74,15 @@ IEEE 802.3
  * CAT 6a supports 10 Gbps over the full length of 100 meters.
  * CAT 7 and CAT 8 are often used in data centers or high-performance environments due to their high bandwidth and speed capabilities.
 
+### connectors
 
+ * RJ-11. telephone wiring. 6-position 2-conductor
+ * RJ-45. data. 8-position 8-conductor
+
+ * F-type connector. (coaxial connector)
+ * RG-X (coaxial connectors)
+    * RG-6. modern standard after RG-59
+ * BNC connector. (coaxial connector). Secure bayonet locking mecanism
 
 ## Encoding and Signaling
 The physical layer is responsible for various encoding and signaling functions that transform the data from bits that reside within a computer or other device into signals that can be sent over the network.
