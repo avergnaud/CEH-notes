@@ -41,18 +41,18 @@ The details of operation of cables, connectors, wireless radio transceivers, net
 
 IEEE 802.3
  * Twisted pair cable
-  * Unshielded Twisted Pair or Shielded Twisted Pair
-  * CAT 5, CAT 5e, CAT 6, CAT 6a, CAT 7, CAT 8
+    * Unshielded Twisted Pair or Shielded Twisted Pair
+    * CAT 5, CAT 5e, CAT 6, CAT 6a, CAT 7, CAT 8
  * Coaxial
-  * RG-6
-  * 1 Gbps, <300 m
+    * RG-6
+    * 1 Gbps, <300 m
  * Direct Attach Copper
-  * DAC active cables. 100 Gbps, <15m
-  * DAC passive cables. 100 Gbps, <7m
+    * DAC active cables. 100 Gbps, <15m
+    * DAC passive cables. 100 Gbps, <7m
  * Twinaxial.
-  * "often a component of a DAC assembly"
-  * from 10 Gbps, 100m
-  * to 100 Gbps, 7m
+    * "often a component of a DAC assembly"
+    * from 10 Gbps, 100m
+    * to 100 Gbps, 7m
  * Plenum or Non-plenum 
 
 | **Cable Category** | **Maximum Data Transfer Speed** | **Maximum Cable Length** | **Frequency** | **Common Name**     |
