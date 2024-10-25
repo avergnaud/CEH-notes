@@ -39,6 +39,22 @@ The following are the main responsibilities of the physical layer in the OSI Ref
 ## Definition of Hardware Specifications
 The details of operation of cables, connectors, wireless radio transceivers, network interface cards and other hardware devices are generally a function of the physical layer (although also partially the data link layer; see below).
 
+IEEE 802.3
+ * Twisted pair cable
+  * Unshielded Twisted Pair or Shielded Twisted Pair
+  * CAT 5, CAT 5e, CAT 6, CAT 6a, CAT 7, CAT 8
+ * Coaxial
+  * RG-6
+  * 1 Gbps, <300 m
+ * Direct Attach Copper
+  * DAC active cables. 100 Gbps, <15m
+  * DAC passive cables. 100 Gbps, <7m
+ * Twinaxial.
+  * "often a component of a DAC assembly"
+  * from 10 Gbps, 100m
+  * to 100 Gbps, 7m
+ * Plenum or Non-plenum 
+
 | **Cable Category** | **Maximum Data Transfer Speed** | **Maximum Cable Length** | **Frequency** | **Common Name**     |
 |--------------------|---------------------------------|--------------------------|---------------|---------------------|
 | **CAT 5**           | 100 Mbps                        | 100 m                    | 100 MHz       | 100BASE-T           |
@@ -53,6 +69,8 @@ The details of operation of cables, connectors, wireless radio transceivers, net
  * CAT 6 can support 10 Gbps speeds, but only for distances up to 55 meters; otherwise, it runs at 1 Gbps for distances up to 100 meters.
  * CAT 6a supports 10 Gbps over the full length of 100 meters.
  * CAT 7 and CAT 8 are often used in data centers or high-performance environments due to their high bandwidth and speed capabilities.
+
+
 
 ## Encoding and Signaling
 The physical layer is responsible for various encoding and signaling functions that transform the data from bits that reside within a computer or other device into signals that can be sent over the network.
