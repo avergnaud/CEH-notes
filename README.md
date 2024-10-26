@@ -84,6 +84,10 @@ IEEE 802.3
     * RG-6. modern standard after RG-59
  * BNC connector. (coaxial connector). Secure bayonet locking mecanism
 
+### cable details
+
+Straight -Through Cable = patch cable.
+
 ## Encoding and Signaling
 The physical layer is responsible for various encoding and signaling functions that transform the data from bits that reside within a computer or other device into signals that can be sent over the network.
 
