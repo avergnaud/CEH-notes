@@ -94,7 +94,7 @@ Data Communication Equipment
 
 Medium Dependent Interface Crossover (MDIX)
 
-Crossover cable
+Crossover cable RJ45
 
 ![568B 568A](./doc/cables_crossover.png?raw=true)
 
