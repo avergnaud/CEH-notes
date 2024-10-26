@@ -88,6 +88,16 @@ IEEE 802.3
 
 Straight -Through Cable = patch cable.
 
+Data Terminal Equipment
+
+Data Communication Equipment
+
+Medium Dependent Interface Crossover (MDIX)
+
+Crossover cable
+
+![568B 568A](./doc/cables_crossover.png?raw=true)
+
 ## Encoding and Signaling
 The physical layer is responsible for various encoding and signaling functions that transform the data from bits that reside within a computer or other device into signals that can be sent over the network.
 
